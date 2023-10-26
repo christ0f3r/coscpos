@@ -16,6 +16,10 @@ app.get('/manager_view', (req, res) => {
   res.render('manager_view');
 });
 
+app.get('/inventory_view', (req, res) => {
+  res.render('inventory_view');
+});
+
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
