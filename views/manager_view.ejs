@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>manager view</title>
+    <title>Manager View</title>
+    <style>
+        body {
+            background-color: #f7f7f7; /* Light gray background */
+            color: #333; /* Text color */
+            font-family: "San Francisco", Arial, sans-serif; /* Apple-like font */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content vertically */
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black header background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%; /* Ensure the header spans the full width */
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center the "Server View" title horizontally */
+            font-size: 1000; /* Larger font size */
+            color: #fff;
+            font-weight: bold; /* Bold font weight */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 30px 60px; /* Larger padding to make middle buttons bigger */
+            background-color: #888; /* Gray button background color */
+            color: #fff; /* Text color */
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold; /* Bold text */
+            font-size: 1.5rem; /* Larger font size */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .button:hover {
+            background-color: #fff; /* White button background on hover */
+            color: #000; /* Black text color on hover */
+        }
+
+        .small-button {
+            display: inline-block;
+            padding: 10px 20px; /* Smaller padding for the "Go to index" button */
+            background-color: #888; /* Gray button background color */
+            color: #fff; /* Text color */
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold; /* Bold text */
+            font-size: 1rem; /* Smaller font size for the "Go to index" button */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .small-button:hover {
+            background-color: #fff; /* White button background on hover */
+            color: #000; /* Black text color on hover */
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: left; /* Left-justify the content */
+        }
+    </style>
 </head>
 <body>
-    <h1>manager view</h1>
-    <a href="/">Go to index</a>
+    <header>
+        <a href="/" class="small-button">Go to index</a>
+    </header>
+
+    <h1>Manager View</h1>
+
+    <div class="button-container">
+        <a href="/inventory-review.html" class="button">Inventory Review</a>
+        <a href="/sale-reports.html" class="button">Sale Reports</a>
+    </div>
 </body>
 </html>
