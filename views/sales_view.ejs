@@ -9,92 +9,36 @@
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <!-- Add any necessary styles or scripts here -->
 </head>
 <body>
-    <h2>Sales Summary</h2>
+    <h2>Combined Data for Year <%= selectedYear %></h2>
     <table>
         <tr>
-            <th>Description</th>
-            <th>Amount</th>
+            <th>Date</th>
+            <th>Gross Sales</th>
+            <th>Discounts</th>
+            <th>Net Sales</th>
+            <th>Tax</th>
+            <th>Credit Card</th>
+            <th>Debit Card</th>
+            <th>Cash</th>
         </tr>
-        <tr>
-            <td>Gross Sales</td>
-            <td>$1,000.00</td>
-        </tr>
-        <tr>
-            <td>Discounts</td>
-            <td>-$100.00</td>
-        </tr>
-        <tr>
-            <td>Net Sales</td>
-            <td>$900.00</td>
-        </tr>
-        <tr>
-            <td>Tax (7%)</td>
-            <td>$63.00</td>
-        </tr>
-    </table>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 60%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Payment Summary</h2>
-    <table>
-        <tr>
-            <th>Payment Method</th>
-            <th>Amount</th>
-        </tr>
-        <tr>
-            <td>Credit Card</td>
-            <td>$500.00</td>
-        </tr>
-        <tr>
-            <td>Debit Card</td>
-            <td>$300.00</td>
-        </tr>
-        <tr>
-            <td>Cash</td>
-            <td>$200.00</td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td>$1,000.00</td>
-        </tr>
+        <% data.forEach(item => { %>
+            <tr>
+                <td><%= item.Date.toDateString() %></td>
+                <td>$<%= item.GrossSales.toFixed(2) %></td>
+                <td>$<%= item.Discounts.toFixed(2) %></td>
+                <td>$<%= item.NetSales.toFixed(2) %></td>
+                <td>$<%= item.Tax.toFixed(2) %></td>
+                <td>$<%= item.CreditCard.toFixed(2) %></td>
+                <td>$<%= item.DebitCard.toFixed(2) %></td>
+                <td>$<%= item.Cash.toFixed(2) %></td>
+            </tr>
+        <% }); %>
     </table>
 </body>
 </html>
