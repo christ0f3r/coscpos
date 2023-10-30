@@ -7,7 +7,7 @@ mysql -h cosc-pos-server.mysql.database.azure.com -u jbatac25 -p
 
 */
 //attempting to connect to azure mysql server
-var db = mysql.createdb({
+var db = mysql.createConnection({
   host:"cosc-pos-server.mysql.database.azure.com", 
   user:"jbatac25", 
   password:"Josh2400!",
@@ -23,10 +23,6 @@ db.connect((err) => {
   }
   console.log('Connected to MySQL database!');
 });
-
-app.use(express.static('public'));
-app.use('/css',express.static(__dirname+'public/css'));
-app.use('/js',express.static(__dirname+'public/js'));
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -54,7 +50,7 @@ app.get('/sales_view', (req, res) => {
 app.get('/inventory_Report', (req, res) => {
   // Replace the query with your SQL query to fetch data from the database
   const query = 'SELECT * FROM Ingredient;';
-  db.query(query, (error, results) => { //attempt to send query
+  db.query(query, (error, results) => { //attempt
     if (error) {console.error('Error executing the query: ' + error);return;}
 
     res.render('inventory_Report.ejs', { data: results });
