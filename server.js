@@ -24,6 +24,10 @@ app.get('/sales_view', (req, res) => {
   res.render('sales_view');
 });
 
+app.get('/inventory_Report', (req, res) =>  {
+  res.render('inventory_Report');
+});
+
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
