@@ -7,21 +7,25 @@ mysql -h cosc-pos-server.mysql.database.azure.com -u jbatac25 -p
 
 */
 //attempting to connect to azure mysql server
-var db = mysql.createConnection({
-  host:"cosc-pos-server.mysql.database.azure.com", 
-  user:"jbatac25", 
-  password:"Josh2400!",
-  database:"point_of_sales", 
-  port:3306
-  });
+const db = mysql.createPool({
+  connectionLimit: 10, // You can adjust the limit based on your requirements
+  host: "cosc-pos-server.mysql.database.azure.com",
+  user: "jbatac25",
+  password: "Josh2400!",
+  database: "point_of_sales",
+  port: 3306
+});
 
-//checking if db is valid 
-db.connect((err) => { 
+// Checking if the pool is valid
+db.getConnection((err, connection) => {
   if (err) {
-      console.error('Error connecting to database:', err);
-      return;
+    console.error('Error connecting to database:', err);
+    return;
   }
   console.log('Connected to MySQL database!');
+
+  // Release the connection after you're done using it
+  connection.release();
 });
 
 app.set('view engine', 'ejs');
