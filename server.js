@@ -1,5 +1,23 @@
 const express = require('express');
+const mysql = require('mysql');
 const app = express();
+
+var connection=mysql.createConnection(
+  {
+  host:"cosc-pos-server.mysql.database.azure.com", 
+  user:"jbatac25", 
+  password:"Josh2400!",
+  database:"point_of_sales", 
+  port:3306
+  });
+
+connection.connect((err) => {
+  if (err) {
+      console.error('Error connecting to database:', err);
+      return;
+  }
+  console.log('Connected to MySQL database!');
+});
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
