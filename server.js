@@ -1,17 +1,21 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+/*
 
-var connection=mysql.createConnection(
-  {
+mysql -h cosc-pos-server.mysql.database.azure.com -u jbatac25 -p
+
+*/
+//attempting to connect to azure mysql server
+var connection=mysql.createConnection({
   host:"cosc-pos-server.mysql.database.azure.com", 
   user:"jbatac25", 
   password:"Josh2400!",
   database:"point_of_sales", 
   port:3306
   });
-
-connection.connect((err) => {
+//checking if connection is valid 
+connection.connect((err) => { 
   if (err) {
       console.error('Error connecting to database:', err);
       return;
@@ -26,7 +30,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/server_view', (req, res) => {
+app.get('/server_view', (req, res) => { //josh
   res.render('server_view');
 });
 
@@ -42,8 +46,19 @@ app.get('/sales_view', (req, res) => {
   res.render('sales_view');
 });
 
-app.get('/inventory_Report', (req, res) =>  {
-  res.render('inventory_Report');
+app.get('/inventory_Report', (req, res) => {
+  // Replace the query with your SQL query to fetch data from the database
+  const query = 'SELECT * FROM Ingredient;';
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing the query: ' + error);
+      return;
+    }
+
+    // Render the EJS template with the data
+    res.render('inventory_Report.ejs', { data: results });
+  });
 });
 
 

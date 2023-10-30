@@ -7,14 +7,14 @@
 <h1>Table Data</h1>
   <table>
     <tr>
-      <th>Ingrediant</th>
-      <th>Quantity</th>
-      <th>Quantity Ordered</th>
+      <th>Ingredient</th>
+      <th>current Storage</th>
+      <th>max Storage</th>
       <% data.forEach(item => { %>
       <tr>
-        <td><%= item.ingrediantName %></td>
-        <td><%= item.Quantity %></td>
-        <td><%= item.QuantityonOrder %></td>
+        <td><%= item.ingredientName %></td>
+        <td><%= item.currentStorage %></td>
+        <td><%= item.maxStorage %></td>
       </tr>
     <% }); %>
     </tr>
