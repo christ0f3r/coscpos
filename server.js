@@ -50,6 +50,7 @@ app.get('/sales_view', (req, res) => {
   res.render('sales_view');
 });
 
+
 app.get('/inventory_Report', (req, res) => {
   // Replace the query with your SQL query to fetch data from the database
   const query = 'SELECT * FROM Ingredient;';
@@ -60,7 +61,7 @@ app.get('/inventory_Report', (req, res) => {
   });
 });
 
-
+ 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 });

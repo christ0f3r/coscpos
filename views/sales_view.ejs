@@ -9,13 +9,14 @@
 </body>
 </html>
 
-<!DOCTYPE html>
+
+<!-- sales.ejs -->
 <html>
 <head>
-    <!-- Add any necessary styles or scripts here -->
+    <title>Sales Data</title>
 </head>
 <body>
-    <h2>Combined Data for Year <%= selectedYear %></h2>
+    <h1>Sales Data for the Year</h1>
     <table>
         <tr>
             <th>Date</th>
@@ -27,16 +28,17 @@
             <th>Debit Card</th>
             <th>Cash</th>
         </tr>
-        <% data.forEach(item => { %>
+        <!-- Loop through your sales data here -->
+        <% salesData.forEach(sale => { %>
             <tr>
-                <td><%= item.Date.toDateString() %></td>
-                <td>$<%= item.GrossSales.toFixed(2) %></td>
-                <td>$<%= item.Discounts.toFixed(2) %></td>
-                <td>$<%= item.NetSales.toFixed(2) %></td>
-                <td>$<%= item.Tax.toFixed(2) %></td>
-                <td>$<%= item.CreditCard.toFixed(2) %></td>
-                <td>$<%= item.DebitCard.toFixed(2) %></td>
-                <td>$<%= item.Cash.toFixed(2) %></td>
+                <td><%= sale.date %></td>
+                <td><%= sale.grossSales %></td>
+                <td><%= sale.discounts %></td>
+                <td><%= sale.netSales %></td>
+                <td><%= sale.tax %></td>
+                <td><%= sale.creditCard %></td>
+                <td><%= sale.debitCard %></td>
+                <td><%= sale.cash %></td>
             </tr>
         <% }); %>
     </table>
