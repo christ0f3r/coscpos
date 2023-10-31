@@ -13,7 +13,6 @@ const db = mysql.createPool({
   user: "jbatac25",
   password: "Josh2400!",
   database: "point_of_sales",
-  port: 3306
 });
 
 // Checking if the pool is valid
