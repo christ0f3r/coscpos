@@ -10,37 +10,73 @@
 </html>
 
 
-<!-- sales.ejs -->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Sales Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sales Data for the Year</h1>
+    <h2>Sales Summary</h2>
     <table>
-        <tr>
-            <th>Date</th>
-            <th>Gross Sales</th>
-            <th>Discounts</th>
-            <th>Net Sales</th>
-            <th>Tax</th>
-            <th>Credit Card</th>
-            <th>Debit Card</th>
-            <th>Cash</th>
-        </tr>
-        <!-- Loop through your sales data here -->
-        <% salesData.forEach(sale => { %>
+        <thead>
             <tr>
-                <td><%= sale.date %></td>
-                <td><%= sale.grossSales %></td>
-                <td><%= sale.discounts %></td>
-                <td><%= sale.netSales %></td>
-                <td><%= sale.tax %></td>
-                <td><%= sale.creditCard %></td>
-                <td><%= sale.debitCard %></td>
-                <td><%= sale.cash %></td>
+                <th>Description</th>
+                <th>Amount</th>
             </tr>
-        <% }); %>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gross Sales</td>
+                <td><%= grossSales %></td>
+            </tr>
+            <tr>
+                <td>Discounts</td>
+                <td><%= discounts %></td>
+            </tr>
+            <tr>
+                <td>Net Sales</td>
+                <td><%= netSales %></td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td><%= tax %></td>
+            </tr>
+            <tr>
+                <td>Credit Card</td>
+                <td><%= creditCard %></td>
+            </tr>
+            <tr>
+                <td>Debit</td>
+                <td><%= debit %></td>
+            </tr>
+            <tr>
+                <td>Cash</td>
+                <td><%= cash %></td>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
