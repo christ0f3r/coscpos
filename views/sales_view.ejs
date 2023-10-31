@@ -9,36 +9,54 @@
 </body>
 </html>
 
+
+<!-- index.ejs -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Add any necessary styles or scripts here -->
+    <title>Sales Report</title>
 </head>
 <body>
-    <h2>Combined Data for Year <%= selectedYear %></h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Gross Sales</th>
-            <th>Discounts</th>
-            <th>Net Sales</th>
-            <th>Tax</th>
-            <th>Credit Card</th>
-            <th>Debit Card</th>
-            <th>Cash</th>
-        </tr>
-        <% data.forEach(item => { %>
+    <h1>Sales Report</h1>
+    
+    <!-- Form to input the start and end date -->
+    <form action="/generate-report" method="post">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+        <input type="submit" value="Generate Report">
+    </form>
+    
+    <table border="1">
+        <thead>
             <tr>
-                <td><%= item.Date.toDateString() %></td>
-                <td>$<%= item.GrossSales.toFixed(2) %></td>
-                <td>$<%= item.Discounts.toFixed(2) %></td>
-                <td>$<%= item.NetSales.toFixed(2) %></td>
-                <td>$<%= item.Tax.toFixed(2) %></td>
-                <td>$<%= item.CreditCard.toFixed(2) %></td>
-                <td>$<%= item.DebitCard.toFixed(2) %></td>
-                <td>$<%= item.Cash.toFixed(2) %></td>
+                <th>Date</th>
+                <th>Gross Sales</th>
+                <th>Discounts</th>
+                <th>Net Sales</th>
+                <th>Tax</th>
+                <th>Credit Card</th>
+                <th>Debit</th>
+                <th>Cash</th>
             </tr>
-        <% }); %>
+        </thead>
+        <tbody>
+            <% for (var i = 0; i < salesData.length; i++) { %>
+                <tr>
+                    <td><%= salesData[i].date %></td>
+                    <td><%= salesData[i].grossSales %></td>
+                    <td><%= salesData[i].discounts %></td>
+                    <td><%= salesData[i].netSales %></td>
+                    <td><%= salesData[i].tax %></td>
+                    <td><%= salesData[i].creditCard %></td>
+                    <td><%= salesData[i].debit %></td>
+                    <td><%= salesData[i].cash %></td>
+                </tr>
+            <% } %>
+        </tbody>
     </table>
 </body>
 </html>
+
