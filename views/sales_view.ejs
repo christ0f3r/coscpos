@@ -9,3 +9,38 @@
 </body>
 </html>
 
+
+<!-- sales.ejs -->
+<html>
+<head>
+    <title>Sales Data</title>
+</head>
+<body>
+    <h1>Sales Data for the Year</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Gross Sales</th>
+            <th>Discounts</th>
+            <th>Net Sales</th>
+            <th>Tax</th>
+            <th>Credit Card</th>
+            <th>Debit Card</th>
+            <th>Cash</th>
+        </tr>
+        <!-- Loop through your sales data here -->
+        <% salesData.forEach(sale => { %>
+            <tr>
+                <td><%= sale.date %></td>
+                <td><%= sale.grossSales %></td>
+                <td><%= sale.discounts %></td>
+                <td><%= sale.netSales %></td>
+                <td><%= sale.tax %></td>
+                <td><%= sale.creditCard %></td>
+                <td><%= sale.debitCard %></td>
+                <td><%= sale.cash %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
