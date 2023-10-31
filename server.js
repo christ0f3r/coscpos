@@ -50,9 +50,8 @@ app.get('/inventory_view', (req, res) => {
 app.get('/sales_view', (req, res) => {
   res.render('sales_view');
 });
-// In your Express route handler
+
 app.get('/sales-report', function(req, res) {
-  // Sample sales data with date information
   var salesData = [
       { date: '2023-10-01', grossSales: 1000, discounts: 100, netSales: 900, tax: 90, creditCard: 500, debit: 300, cash: 100 },
       { date: '2023-10-02', grossSales: 1200, discounts: 150, netSales: 1050, tax: 105, creditCard: 600, debit: 350, cash: 100 },
@@ -62,6 +61,7 @@ app.get('/sales-report', function(req, res) {
 
   res.render('sales_view', { salesData: salesData });
 });
+
 
 // Handle the form submission to filter data based on the selected time period
 app.post('/generate-report', function(req, res) {
