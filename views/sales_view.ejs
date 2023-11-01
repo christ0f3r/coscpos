@@ -9,38 +9,6 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sales Data</title>
-</head>
-<body>
-    <h1>Sales Data Over Time</h1>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Gross Sales</th>
-            <th>Discounts</th>
-            <th>Net Sales</th>
-            <th>Tax</th>
-            <th>Credit Card</th>
-            <th>Debit</th>
-            <th>Cash</th>
-        </tr>
-        <% salesData.forEach(function(sale) { %>
-        <tr>
-            <td><%= sale.sales_date %></td>
-            <td><%= sale.gross_sales %></td>
-            <td><%= sale.discounts %></td>
-            <td><%= sale.gross_sales - sale.discounts %></td>
-            <td><%= sale.tax %></td>
-            <td><%= sale.credit_card %></td>
-            <td><%= sale.debit %></td>
-            <td><%= sale.cash %></td>
-        </tr>
-        <% }); %>
-    </table>
-</body>
-</html>
+
 
 
