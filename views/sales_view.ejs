@@ -12,12 +12,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sales Data</title>
+  <title>Sales and Payments</title>
 </head>
 <body>
   <h1>Sales Data</h1>
-
-  <h2>Sales Table</h2>
   <table>
     <tr>
       <th>Date</th>
@@ -37,15 +35,13 @@
     <% }); %>
   </table>
 
-  <h2>Payment Methods Table</h2>
+  <h1>Payment Methods</h1>
   <table>
     <tr>
-      <th>Sale ID</th>
-      <th>Payment Method</th>
+      <th>Method</th>
     </tr>
     <% paymentsData.forEach(function(payment) { %>
       <tr>
-        <td><%= payment.sale_id %></td>
         <td><%= payment.method %></td>
       </tr>
     <% }); %>
