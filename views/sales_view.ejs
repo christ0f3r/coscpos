@@ -9,6 +9,49 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sales Data</title>
+</head>
+<body>
+  <h1>Sales Data</h1>
+
+  <h2>Sales Table</h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Gross Sales</th>
+      <th>Discounts</th>
+      <th>Net Sales</th>
+      <th>Tax</th>
+    </tr>
+    <% salesData.forEach(function(sale) { %>
+      <tr>
+        <td><%= sale.date %></td>
+        <td><%= sale.gross_sales %></td>
+        <td><%= sale.discounts %></td>
+        <td><%= sale.net_sales %></td>
+        <td><%= sale.tax %></td>
+      </tr>
+    <% }); %>
+  </table>
+
+  <h2>Payment Methods Table</h2>
+  <table>
+    <tr>
+      <th>Sale ID</th>
+      <th>Payment Method</th>
+    </tr>
+    <% paymentsData.forEach(function(payment) { %>
+      <tr>
+        <td><%= payment.sale_id %></td>
+        <td><%= payment.method %></td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>
 
 
 
