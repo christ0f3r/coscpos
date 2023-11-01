@@ -12,24 +12,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Transactions Over the Past Year</title>
+  <title>Transaction Graph</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>Transactions Over the Past Year</h1>
-  <table>
-    <tr>
-      <th>Transaction Date</th>
-      <th>Amount</th>
-      <th>Description</th>
-    </tr>
-    <% transactionsData.forEach(function(transaction) { %>
-      <tr>
-        <td><%= transaction.transaction_date %></td>
-        <td><%= transaction.amount %></td>
-        <td><%= transaction.description %></td>
-      </tr>
-    <% }); %>
-  </table>
+  <h1>Transaction Graph</h1>
+  <div style="width: 80%; margin: auto;">
+    <canvas id="transactionChart"></canvas>
+  </div>
+  <script>
+    const data = <%- JSON.stringify(data) %>;
+
+    const labels = data.map((entry) => entry.date);
+    const values = data.map((entry) => entry.amount);
+
+    const ctx = document.getElementById('transactionChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Transaction Amount',
+          data: values,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1,
+        }],
+      },
+    });
+  </script>
 </body>
 </html>
-
