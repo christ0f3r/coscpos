@@ -1,0 +1,98 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff, #fff9d9); /* White to UH Yellow gradient */
+}
+
+header {
+    background-color: #C8102E; /* UH Red */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header h1 a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+    color: #C8102E; /* UH Red */
+    margin-top: 20px;
+}
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* White */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #C8102E; /* UH Red */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #741B33; /* Darker UH Red */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #C8102E; /* UH Red */
+    color: #fff;
+    margin-top: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #C8102E; /* UH Red */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #741B33; /* Darker UH Red */
+}

@@ -4,7 +4,7 @@ const app = express();
 /*
 
 mysql -h cosc-pos-server.mysql.database.azure.com -u jbatac25 -p
-test 
+
 */
 //attempting to connect to azure mysql server
 const db = mysql.createPool({
@@ -26,12 +26,22 @@ db.getConnection((err, connection) => {
   // Release the connection after you're done using it
   connection.release();
 });
+app.use(express.urlencoded({ extended: true })); // Middleware to parse POST request body
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+
+app.get('/failed_login', (req, res) => {
+  res.render('failed_login');
+});
+
+app.get('/login_view', (req, res) => {
+  res.render('login_view');
 });
 
 app.get('/server_view', (req, res) => { //josh
@@ -61,7 +71,35 @@ app.get('/inventory_Report', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  // Query your database for authentication using 'credentials' table
+  const query = 'SELECT employeeID, isManager FROM credentials WHERE employeeID = ? AND password = ?';
+  db.query(query, [username, password], (error, results, fields) => {
+    if (error) {
+      res.send('An error occurred during login');
+      throw error;
+    }
+    if (results.length > 0) {
+      const user = results[0]; // Assuming there's only one user with this ID
+
+      if (user.isManager) {
+        // Manager login
+        res.redirect('/');
+      } else {
+        // Non-manager login
+        res.redirect('/server_view');
+      }
+    } else {
+      // Failed login
+      res.redirect('/failed_login'); //  a failed login view
+    }
+  });
+});
+
  
 app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+  console.log('Server is running on http://localhost:3000/login_view');
 });
