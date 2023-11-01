@@ -1,4 +1,4 @@
-app.get('/', (req, res) => {
+app.get('/sales_view', (req, res) => {
     db.query('SELECT date, amount FROM transaction_table', (err, results) => {
       if (err) throw err;
       const data = results.map((row) => ({

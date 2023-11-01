@@ -57,14 +57,23 @@ app.get('/inventory_view', (req, res) => {
 });
 
 app.get('/sales_view', (req, res) => {
-  res.render('sales_view');
+  db.query('SELECT DateAndTime, TotalPrice FROM transaction', (err, results) => {
+    if (err) throw err;
+    const data = results.map((row) => ({
+      date: row.date,
+      amount: row.amount,
+    }));
+
+    res.render('sales_view.ejs', { data });
+  });
 });
+
 app.get('/manage_employee_view', (req, res) => {
   res.render('manage_employee_view');
 });
 
 
-app.get('/inventory_Report', (req, res) => {
+app.get('/inventory_Report', (req, res) => { //santiago's
   // Replace the query with your SQL query to fetch data from the database
   const query = 'SELECT * FROM Ingredient;';
   db.query(query, (error, results) => { //attempt
@@ -74,7 +83,7 @@ app.get('/inventory_Report', (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', (req, res) => { //josh
   const username = req.body.username;
   const password = req.body.password;
 
