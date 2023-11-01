@@ -4,7 +4,7 @@ const app = express();
 /*
 
 mysql -h cosc-pos-server.mysql.database.azure.com -u jbatac25 -p
-
+test 
 */
 //attempting to connect to azure mysql server
 const db = mysql.createPool({
