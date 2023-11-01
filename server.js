@@ -72,6 +72,9 @@ app.get('/manage_employee_view', (req, res) => {
   res.render('manage_employee_view');
 });
 
+app.get('/modify_inventory', (req, res) => {
+  res.render('modify_inventory');
+});
 
 app.get('/inventory_Report', (req, res) => { //santiago's
   // Replace the query with your SQL query to fetch data from the database
