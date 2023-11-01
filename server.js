@@ -59,6 +59,9 @@ app.get('/inventory_view', (req, res) => {
 app.get('/sales_view', (req, res) => {
   res.render('sales_view');
 });
+app.get('/manage_employee_view', (req, res) => {
+  res.render('manage_employee_view');
+});
 
 
 app.get('/inventory_Report', (req, res) => {

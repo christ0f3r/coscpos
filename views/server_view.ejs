@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Server view</title>
+    <title>Fast Food Point of Sale</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .menu {
+            width: 30%;
+            padding: 10px;
+        }
+        .display {
+            width: 65%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .menu-button {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: #00b388;
+            cursor: pointer;
+        }
+        .taco-button {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: #00b388; /* Updated color */
+            cursor: pointer;
+            color: white;
+        }
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+        .stacked-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #dff0d8;
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <h1><a href="/">TEAM 13 TACOS</a></h1>
     </header>
 
-    <h1 class="text-center">Server view</h1>
+    <h1 class="text-center">Fast Food Point of Sale</h1>
+
+    <div class="container">
+        <div class="menu">
+            <button class="taco-button" onclick="toggleTacoOptions()">Order Taco</button>
+            <div class="taco-options hidden" id="tacoOptions">
+                <h3>Choose Taco Options:</h3>
+                <h4>Meat:</h4>
+                <div>
+                    <label><input type="radio" name="meat" value="Beef"> Beef</label><br>
+                    <label><input type="radio" name="meat" value="Chicken"> Chicken</label><br>
+                    <label><input type="radio" name="meat" value="Vegetarian"> Vegetarian</label><br>
+                </div>
+                <h4>Shell:</h4>
+                <div>
+                    <label><input type="radio" name="shell" value="Hard"> Hard Shell</label><br>
+                    <label><input type="radio" name="shell" value="Soft"> Soft Shell</label><br>
+                </div>
+                <h4>Supreme:</h4>
+                <div>
+                    <label><input type="radio" name="supreme" value="Yes"> Supreme</label><br>
+                    <label><input type="radio" name="supreme" value="Regular"> Regular</label><br>
+                </div>
+                <button class="menu-button" onclick="orderCustomTaco()">Place Order</button>
+            </div>
+        </div>
+
+        
+        <div class="display">
+            <h2>Selected Items</h2>
+            <ul class="item-list" id="selectedItems" onclick="deleteItem(event)"></ul>
+        </div>
+    </div>
 
     <a href="/" class="back-to-login">Go to index</a>
 
@@ -18,5 +100,32 @@
         <p>Joshua Batac | Loryn Higginbotham | Zain Baig | John Cruz | Luis Ramos</p>
     </footer>
 
+    <script>
+        function toggleTacoOptions() {
+            const options = document.getElementById('tacoOptions');
+            options.classList.toggle('hidden');
+        }
+
+        function orderCustomTaco() {
+            const meat = document.querySelector('input[name="meat"]:checked').value;
+            const shell = document.querySelector('input[name="shell"]:checked').value;
+            const supreme = document.querySelector('input[name="supreme"]:checked').value;
+
+            const tacoOrder = `Taco: ${meat}, ${shell} shell, ${supreme}`;
+
+            const newItem = document.createElement('li');
+            newItem.className = 'stacked-item';
+            newItem.appendChild(document.createTextNode(tacoOrder));
+            document.getElementById('selectedItems').appendChild(newItem);
+
+            document.getElementById('tacoOptions').classList.add('hidden');
+        }
+
+        function deleteItem(event) {
+            if (event.target.tagName === 'LI') {
+                event.target.remove();
+            }
+        }
+    </script>
 </body>
 </html>
