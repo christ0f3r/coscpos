@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Inventory</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/login_view">TEAM 13 TACOS</a></h1>
+    </header>
+
+    <h1 class="text-center">MANAGE INVENTORY</h1>
+
+    <div>
+        <!-- Add Ingredient-->
+        <form action="/add-ingredient" method="POST">
+            <label for="add-ingredients">Select an ingredient to add </label>
+            <select id="add-ingredients" name="ingredientToAdd">
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Hard_shell">Hard Shell</option>
+                <option value="Tortilla">Tortilla</option>
+                <option value="Lettuce">Lettuce</option>
+                <option value="Cheese">Cheese</option>
+                <option value="Tomato">Tomato</option>
+                <option value="Sour_cream">Sour Cream</option>
+            </select>
+            <label for="add-quantity">Quantity</label>
+            <div class="input-group">
+                <button type="button" id="add-decrement">-</button>
+                <input type="number" id="add-quantity" name="quantityToAdd" value="0">
+                <button type="button" id="add-increment">+</button>
+            </div>
+            <input type="submit" value="Add">
+        </form>
+
+        <!-- Remove Ingredient-->
+        <form action="/remove-ingredient" method="POST">
+            <label for="remove-ingredients">Select an ingredient to add</label>
+            <select id="remove-ingredients" name="ingredientToRemove">
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Hard_shell">Hard Shell</option>
+                <option value="Tortilla">Tortilla</option>
+                <option value="Lettuce">Lettuce</option>
+                <option value="Cheese">Cheese</option>
+                <option value="Tomato">Tomato</option>
+                <option value="Sour_cream">Sour Cream</option>
+            </select>
+            <label for="remove-quantity">Quantity</label>
+            <div class="input-group">
+                <button type="button" id="remove-decrement">-</button>
+                <input type="number" id="remove-quantity" name="quantityToRemove" value="0">
+                <button type="button" id="remove-increment">+</button>
+            </div>
+            <input type="submit" value="Remove">
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle the plus and minus buttons for the "Add" form
+        const addQuantityInput = document.getElementById('add-quantity');
+        const addIncrementButton = document.getElementById('add-increment');
+        const addDecrementButton = document.getElementById('add-decrement');
+    
+        addIncrementButton.addEventListener('click', () => {
+            addQuantityInput.value = parseInt(addQuantityInput.value) + 1;
+        });
+    
+        addDecrementButton.addEventListener('click', () => {
+            if(parseInt(removeQuantityInput.value) > 0) {
+                addQuantityInput.value = parseInt(addQuantityInput.value) - 1;
+            }
+        });
+    
+        // JavaScript to handle the plus and minus buttons for the "Remove" form
+        const removeQuantityInput = document.getElementById('remove-quantity');
+        const removeIncrementButton = document.getElementById('remove-increment');
+        const removeDecrementButton = document.getElementById('remove-decrement');
+    
+        removeIncrementButton.addEventListener('click', () => {
+            removeQuantityInput.value = parseInt(removeQuantityInput.value) + 1;
+        });
+    
+        removeDecrementButton.addEventListener('click', () => {
+            if(parseInt(removeQuantityInput.value) > 0) {
+                removeQuantityInput.value = parseInt(removeQuantityInput.value) - 1;
+            }
+            
+        });
+    </script>
+    
+
+    <footer>
+        <p>Joshua Batac | Loryn Higginbotham | Zain Baig | John Cruz | Luis Ramos</p>
+    </footer>
+</body>
+</html>
